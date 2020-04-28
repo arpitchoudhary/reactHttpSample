@@ -40,12 +40,29 @@ class TableList extends Component{
         })
      }
 
+     getTableKeys(){
+         return {
+            id: '',
+            userId: '',
+            title:'',
+            body:''
+            } ;
+     }
+
+     renderTableHeader() {
+        let header = Object.keys(this.getTableKeys())
+        return header.map((key, index) => {
+           return <th key={index}>{key.toUpperCase()}</th>
+        })
+     }
+
     render(){
         return (
             <div>
                 <h1 id='title'>List of Data</h1>
                 <table id='posts'>
                     <tbody>
+                    <tr>{this.renderTableHeader()}</tr>
                     {this.renderTableData()}
                      </tbody>
                 </table>
